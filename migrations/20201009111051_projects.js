@@ -10,7 +10,7 @@ exports.up = function(knex) {
     table.increments('id').unsigned().primary();
     table.string('name').notNull();
     table.text('description').nullable();
-
+    table.boolean('completed').notNull().defaultTo(false);
     table.integer('resource_id')
         .unsigned()
         .references('id')
@@ -22,7 +22,8 @@ exports.up = function(knex) {
     table.increments('id').unsigned().primary();
     table.text('description').notNull();
     table.text('notes').nullable();
-
+    table.boolean('completed').notNull().defaultTo(false);
+    
     table.integer('project_id')
     .unsigned()
     .references('id')
